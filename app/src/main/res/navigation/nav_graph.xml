@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:id="@+id/nav_graph"
+  app:startDestination="@id/firstFragment">
+
+  <fragment
+    android:id="@+id/firstFragment"
+    android:name="com.example.navigationcomapp1.FirstFragment"
+    android:label="Home"
+    tools:layout="@layout/first_fragment">
+    <action
+      android:id="@+id/action_firstFragment_to_loginFragment"
+      app:destination="@id/loginFragment" />
+  </fragment>
+  <fragment
+    android:id="@+id/loginFragment"
+    android:name="com.example.navigationcomapp1.LoginFragment"
+    android:label="Login"
+    tools:layout="@layout/login_fragment">
+    <action
+      android:id="@+id/action_loginFragment_to_welcomeFragment"
+      app:destination="@id/welcomeFragment" />
+    <argument
+      android:name="username"
+      app:argType="string"
+      app:nullable="true"
+      android:defaultValue="@null" />
+    <deepLink
+      android:id="@+id/deepLink"
+      app:uri="example.com/login/{username}" />
+  </fragment>
+  <fragment
+    android:id="@+id/welcomeFragment"
+    android:name="com.example.navigationcomapp1.WelcomeFragment"
+    android:label="{userName}"
+    tools:layout="@layout/fragment_welcome">
+    <action
+      android:id="@+id/action_welcomeFragment_to_firstFragment"
+      app:destination="@id/firstFragment"
+      app:popUpTo="@id/firstFragment"
+      app:popUpToInclusive="true" />
+    <argument
+      android:name="userName"
+      app:argType="string" />
+    <argument
+      android:name="password"
+      app:argType="string" />
+  </fragment>
+  <fragment
+    android:id="@+id/settingFragment"
+    android:name="com.example.navigationcomapp1.SettingFragment"
+    android:label="fragment_setting"
+    tools:layout="@layout/fragment_setting" />
+  <fragment
+    android:id="@+id/conditionsFragment"
+    android:name="com.example.navigationcomapp1.ConditionsFragment"
+    android:label="fragment_conditions"
+    tools:layout="@layout/fragment_conditions" />
+  <action android:id="@+id/action_global_conditionsFragment" app:destination="@id/conditionsFragment" />
+  <fragment
+    android:id="@+id/searchFragment"
+    android:name="com.example.navigationcomapp1.SearchFragment"
+    android:label="fragment_search"
+    tools:layout="@layout/fragment_search" />
+</navigation>
